@@ -20,6 +20,12 @@ Follow the prompts to create a new player or load a previous game. Make choices 
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the [GitHub repository](https://github.com/software-students-spring2024/3-python-package-exercise-namelessss).
 
+Contributing members are: 
+* [Hannah Horiuchi](https://github.com/hah8236)
+* [Jiahua Liao](https://github.com/Jiahuita)
+* [Kevin Lin](https://github.com/Kalados)
+* [Nicole Luzuriaga](https://github.com/nicjluz)
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
