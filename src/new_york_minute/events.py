@@ -13,7 +13,6 @@ def handle_event(location):
         'Wall Street': 'take a finance workshop to boost your money management skills',
         'Harlem': 'attend a live jazz night and unwind'
     }
-    
     return events.get(location, "just explore the city")
 
 def random_event(player):

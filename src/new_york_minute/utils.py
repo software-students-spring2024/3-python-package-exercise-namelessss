@@ -3,15 +3,17 @@
 import json
 import os
 
-def save_progress(player_data):
+def save_progress(player):
+    player_data = {
+        'name': player.name,
+        'dream': player.dream,
+        'background': player.background,
+        'money': player.money,
+        'reputation': player.reputation,
+        'stress_level': player.stress_level,
+        'current_location': player.current_location,
+        'inventory': player.inventory
+    }
     with open('savegame.json', 'w') as f:
         json.dump(player_data, f)
     print("Game progress saved.")
-
-def load_progress():
-    if os.path.exists('savegame.json'):
-        with open('savegame.json', 'r') as f:
-            player_data = json.load(f)
-        return player_data
-    else:
-        return None

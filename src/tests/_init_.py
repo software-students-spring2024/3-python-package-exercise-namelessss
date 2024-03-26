@@ -1,15 +1,28 @@
-# new_york_minute/new_york_minute/game.py
-
-from .player import Player
-from .events import handle_event, random_event
+from new_york_minute.events import handle_event, random_event
+from new_york_minute.player import Player
+from new_york_minute.utils import save_progress
 
 def start_game():
     print("Welcome to New York Minute!")
+    load_game = input("Do you want to load previous game? (yes/no): ")
+    if load_game.lower() == 'yes':
+        player = Player.load_progress()
+        if player:
+            print(f"Welcome back, {player.name}!")
+        else:
+            print("No saved game found. Starting a new game.")
+            player = create_new_player()
+    else:
+        player = create_new_player()
+    while True:
+        if play_turn(player):
+            break
+
+def create_new_player():
     player_name = input("What's your name? ")
     player_dream = input("What's your dream in New York City? ")
     player_background = input("Choose your background (Artist/Entrepreneur/Student): ")
-    player = Player(player_name, player_dream, player_background)
-    return player
+    return Player(player_name, player_dream, player_background)
 
 def play_turn(player):
     current_location = player.current_location
@@ -23,19 +36,21 @@ def play_turn(player):
     elif action == 'network':
         player.network()
     elif action == 'save':
-        player.save_progress()
+        save_progress(player)
     else:
         print("Invalid action. Please try again.")
     random_event(player)
     if player.reputation >= 100:
         print(f"Congratulations, {player.name}! You've made a name for yourself and achieved your dream of {player.dream}!")
-        return True 
+        return True
     else:
         locations = ['Brooklyn', 'Manhattan', 'Queens', 'The Bronx', 'Staten Island', 'Central Park', 'Wall Street', 'Harlem']
-        current_index = locations.index(player.current_location)
+        current_index = locations.index(current_location)
         if current_index < len(locations) - 1:
             player.current_location = locations[current_index + 1]
         else:
             print("The week has ended, and it's time to rest. Let's see what next week brings!")
-            player.current_location = locations[0]  
+            player.current_location = locations[0]
         return False
+
+start_game()

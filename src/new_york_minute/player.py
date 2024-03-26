@@ -2,6 +2,7 @@
 
 import json
 import os
+
 class Player:
     def __init__(self, name, dream, background):
         self.name = name
@@ -25,21 +26,6 @@ class Player:
     def network(self):
         self.reputation += 10
         print("You attended a networking event and improved your reputation.")
-
-    def save_progress(self):
-        player_data = {
-            'name': self.name,
-            'dream': self.dream,
-            'background': self.background,
-            'money': self.money,
-            'reputation': self.reputation,
-            'stress_level': self.stress_level,
-            'current_location': self.current_location,
-            'inventory': self.inventory
-        }
-        with open('savegame.json', 'w') as f:
-            json.dump(player_data, f)
-        print("Game progress saved.")
 
     @classmethod
     def load_progress(cls):
