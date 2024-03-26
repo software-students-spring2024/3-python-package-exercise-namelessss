@@ -1,22 +1,14 @@
-[[
-source
-]]
+[[source]]
 url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
-[
-packages
-]
+[packages]
 
-[
-dev-packages
-]
+[dev-packages]
 pytest = "*"
-build = "*"
 twine = "*"
+build = "*"
 
-[
-requires
-]
+[requires]
 python_version = "3.8"
