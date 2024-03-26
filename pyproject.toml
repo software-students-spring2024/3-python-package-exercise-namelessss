@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "new_york_minute"
-version = "1.1.0"
+version = "0.1.0"
 authors = [
     {name = "Hannah Horiuchi", email = "hah8236@nyu.edu"},
     {name = "Jiahua Liao", email = "jl11844@nyu.edu"},
@@ -25,9 +25,6 @@ classifiers = [
 
 [project.urls]
 "Homepage" = "https://github.com/software-students-spring2024/3-python-package-exercise-namelessss"
-
-[tool.setuptools.packages.find]
-where = ["new_york_minute"]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
