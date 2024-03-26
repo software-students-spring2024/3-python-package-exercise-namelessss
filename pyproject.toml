@@ -25,6 +25,3 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
 ]
-
-[tool.setuptools.packages.find]
-where = ["new_york_minute"]
