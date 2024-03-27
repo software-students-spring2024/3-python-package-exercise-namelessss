@@ -1,8 +1,11 @@
+# new_york_minute/tests/test_new_york_minute.py
+
 import pytest
 from new_york_minute.player import Player
 from new_york_minute.events import handle_event, random_event
-from new_york_minute.utils import save_progress, load_progress
+from new_york_minute.utils import save_progress
 from new_york_minute.game import start_game, play_turn
+from new_york_minute import solo_game, multiplayer_game, custom_game, load_game
 
 def test_player_creation():
     player = Player("John", "Become a famous musician", "Artist")
@@ -36,12 +39,39 @@ def test_random_event():
     random_event(player)
     assert player.money != initial_money
 
-def test_save_and_load_progress():
+def test_save_and_load_progress(tmp_path):
     player = Player("John", "Become a famous musician", "Artist")
     player.money = 1500
     player.reputation = 20
-    save_progress(player)
-    loaded_player = load_progress()
+    save_file = tmp_path / "savegame.json"
+    save_progress(player, save_file)
+    loaded_player = Player.load_progress(save_file)
     assert loaded_player.name == "John"
     assert loaded_player.money == 1500
     assert loaded_player.reputation == 20
+
+def test_solo_game(capsys):
+    solo_game("Alice", "Become a successful entrepreneur", "Entrepreneur")
+    captured = capsys.readouterr()
+    assert "Welcome, Alice!" in captured.out
+
+def test_multiplayer_game(capsys):
+    multiplayer_game(["Bob", "Charlie"], ["Open a restaurant", "Become a famous actor"], ["Entrepreneur", "Artist"])
+    captured = capsys.readouterr()
+    assert "Welcome, Bob!" in captured.out
+    assert "Welcome, Charlie!" in captured.out
+
+def test_custom_game(capsys):
+    custom_game(2, ["David", "Eve", "Frank"], ["Become a famous writer", "Launch a tech startup", "Become a successful lawyer"], ["Artist", "Entrepreneur", "Entrepreneur"])
+    captured = capsys.readouterr()
+    assert "Welcome, David!" in captured.out
+    assert "Welcome, Eve!" in captured.out
+    assert "Welcome, Frank!" not in captured.out
+
+def test_load_game(tmp_path, capsys):
+    save_file = tmp_path / "savegame.json"
+    player = Player("John", "Become a famous musician", "Artist")
+    save_progress(player, save_file)
+    load_game(save_file)
+    captured = capsys.readouterr()
+    assert "Welcome, John!" in captured.out
