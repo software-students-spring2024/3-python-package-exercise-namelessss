@@ -43,7 +43,7 @@ def test_save_and_load_progress(tmp_path):
     player.reputation = 20
     save_file = tmp_path / "savegame.json"
     save_progress(player, save_file)
-    loaded_player = Player.load_progress(save_file) # has save_file parameter
+    loaded_player = Player.load_progress(save_file)
     assert loaded_player.name == "John"
     assert loaded_player.money == 1500
     assert loaded_player.reputation == 20
