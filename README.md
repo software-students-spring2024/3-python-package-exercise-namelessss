@@ -101,7 +101,7 @@ The -s flag allows capturing of stdout and stderr during the tests because this 
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the [GitHub repository](https://github.com/software-students-spring2024/3-python-package-exercise-namelessss).
 
-Contributing members are: 
+### Contributing team members are: 
 * [Hannah Horiuchi](https://github.com/hah8236)
 * [Jiahua Liao](https://github.com/Jiahuita)
 * [Kevin Lin](https://github.com/Kalados)
