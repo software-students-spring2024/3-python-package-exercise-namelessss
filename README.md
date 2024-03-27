@@ -90,7 +90,7 @@ During each turn, you will be presented with the current location and a random e
 
 ## Testing
 To run tests for the New York Minute package in a pipenv, ensure you have pipenv installed. Then run `pipenv install` in a new testing directory.
-After, run `pipenv shell` to activate the virtual environment. Now that we are in the virtual environment, run `install -i https://test.pypi.org/simple/ new-york-minute==0.2.0`
+After, run `pipenv shell` to activate the virtual environment. Now that we are in the virtual environment, run `pipenv install -i https://test.pypi.org/simple/ new-york-minute==0.2.0`
 to download the new_york_minute package. Download the /tests directory from this repository and place it into the root directory. Lastly, run `python -m pytest -s` in the root directory.
 
 The -s flag allows capturing of stdout and stderr during the tests because this project is a console-based game.
