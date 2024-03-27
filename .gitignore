@@ -149,3 +149,4 @@ dmypy.json
 cython_debug/
 
 PyPI Recovery Codes.txt
+savegame.json

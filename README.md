@@ -1,4 +1,4 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/bf53z9SiLJgdgcwSTXUJJ/3ws2HiicMrvX2wCfkdXULG/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/bf53z9SiLJgdgcwSTXUJJ/3ws2HiicMrvX2wCfkdXULG/tree/main)
+![GitHub Actions](https://github.com/software-students-spring2024/3-python-package-exercise-namelessss/actions/workflows/event-logger.yml/badge.svg)
 
 # New York Minute
 
