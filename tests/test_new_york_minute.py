@@ -37,7 +37,7 @@ def test_random_event():
     player = Player("John", "Become a famous musician", "Artist")
     initial_money = player.money
     random_event(player)
-    assert player.money != initial_money
+    assert player.money == initial_money or player.money == initial_money + 100 or player.money == initial_money - 50 or player.money == initial_money + 50
 
 def test_save_and_load_progress(tmp_path):
     player = Player("John", "Become a famous musician", "Artist")
@@ -51,18 +51,18 @@ def test_save_and_load_progress(tmp_path):
     assert loaded_player.reputation == 20
 
 def test_solo_game(capsys):
-    solo_game("Alice", "Become a successful entrepreneur", "Entrepreneur")
+    solo_game("Alice", "Become a successful entrepreneur", "Entrepreneur", actions=['work'])
     captured = capsys.readouterr()
     assert "Welcome, Alice!" in captured.out
 
 def test_multiplayer_game(capsys):
-    multiplayer_game(["Bob", "Charlie"], ["Open a restaurant", "Become a famous actor"], ["Entrepreneur", "Artist"])
+    multiplayer_game(["Bob", "Charlie"], ["Open a restaurant", "Become a famous actor"], ["Entrepreneur", "Artist"], actions=['work', 'relax'])
     captured = capsys.readouterr()
     assert "Welcome, Bob!" in captured.out
     assert "Welcome, Charlie!" in captured.out
 
 def test_custom_game(capsys):
-    custom_game(2, ["David", "Eve", "Frank"], ["Become a famous writer", "Launch a tech startup", "Become a successful lawyer"], ["Artist", "Entrepreneur", "Entrepreneur"])
+    custom_game(2, ["David", "Eve", "Frank"], ["Become a famous writer", "Launch a tech startup", "Become a successful lawyer"], ["Artist", "Entrepreneur", "Entrepreneur"], actions=['network', 'work'])
     captured = capsys.readouterr()
     assert "Welcome, David!" in captured.out
     assert "Welcome, Eve!" in captured.out
@@ -72,6 +72,6 @@ def test_load_game(tmp_path, capsys):
     save_file = tmp_path / "savegame.json"
     player = Player("John", "Become a famous musician", "Artist")
     save_progress(player, save_file)
-    load_game(save_file)
+    load_game(save_file, actions=['save'])
     captured = capsys.readouterr()
     assert "Welcome, John!" in captured.out

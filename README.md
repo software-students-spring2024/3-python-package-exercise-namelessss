@@ -32,11 +32,23 @@ To start a solo game, call the `solo_game` function with the player's name, drea
 solo_game("John", "Become a successful artist", "Artist")
 ```
 
+You can also pass a list of actions to automate the game:
+
+```python
+solo_game("John", "Become a famous musician", "Artist", actions=['work', 'relax', 'network'])
+```
+
 ### Starting a Multiplayer Game
 To start a multiplayer game, call the `multiplayer_game` function with lists of player names, dreams, and backgrounds:
 
 ```python
 multiplayer_game(["Alice", "Bob"], ["Open a cafe", "Launch a tech startup"], ["Entrepreneur", "Student"])
+```
+
+You can also pass a list of actions to automate the game:
+
+```python
+multiplayer_game(["Alice", "Bob"], ["Open a cafe", "Launch a tech startup"], ["Entrepreneur", "Student"], actions=['work', 'relax', 'network'])
 ```
 
 ### Starting a Custom Game
@@ -46,6 +58,12 @@ To start a custom game with a specific number of players, call the `custom_game`
 custom_game(3, ["Alice", "Bob", "Charlie"], ["Open a cafe", "Launch a tech startup", "Become a famous musician"], ["Entrepreneur", "Student", "Artist"])
 ```
 
+You can also pass a list of actions to automate the game:
+
+```python
+custom_game(3, ["Alice", "Bob", "Charlie"], ["Open a cafe", "Launch a tech startup", "Become a famous musician"], ["Entrepreneur", "Student", "Artist"], actions=['work', 'relax', 'network'])
+```
+
 ### Loading a Saved Game
 To load a previously saved game, call the `load_game` function with the path to the save file:
 
@@ -53,8 +71,23 @@ To load a previously saved game, call the `load_game` function with the path to 
 load_game("savegame.json")
 ```
 
+You can also pass a list of actions to automate the game:
+
+```python
+load_game("savegame.json", actions=['work', 'relax', 'network'])
+```
+
 ### Playing the Game
 During each turn, you will be presented with the current location and a random event. You can choose to work, relax, network, or save your progress. The game ends when you achieve your dream by gaining enough reputation points or when you complete all the locations.
+
+### Testing
+To run the tests for the New York Minute package, ensure that you have pytest installed. Then, navigate to the root directory of the package and run the following command:
+
+```python
+pytest -s
+```
+
+The -s flag allows capturing of stdout and stderr during the tests.
 
 ## Contributing
 
