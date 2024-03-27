@@ -106,6 +106,9 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 * [Kevin Lin](https://github.com/Kalados)
 * [Nicole Luzuriaga](https://github.com/nicjluz)
 
+## PyPi Page
+[New York Minute](https://test.pypi.org/project/new-york-minute/0.2.0/) Package
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
