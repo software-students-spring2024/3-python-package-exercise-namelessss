@@ -27,21 +27,21 @@ class Player:
         self.reputation += 10
         print("You attended a networking event and improved your reputation.")
 
-    @classmethod
-    def load_progress(cls):
-        if os.path.exists('savegame.json'):
-            with open('savegame.json', 'r') as f:
-                player_data = json.load(f)
-            player = cls(
-                player_data['name'],
-                player_data['dream'],
-                player_data['background']
-            )
-            player.money = player_data['money']
-            player.reputation = player_data['reputation']
-            player.stress_level = player_data['stress_level']
-            player.current_location = player_data['current_location']
-            player.inventory = player_data['inventory']
-            return player
-        else:
-            return None
+@classmethod
+def load_progress(cls, save_file):
+    if os.path.exists(save_file):
+        with open(save_file, 'r') as f:
+            player_data = json.load(f)
+        player = cls(
+            player_data['name'],
+            player_data['dream'],
+            player_data['background']
+        )
+        player.money = player_data['money']
+        player.reputation = player_data['reputation']
+        player.stress_level = player_data['stress_level']
+        player.current_location = player_data['current_location']
+        player.inventory = player_data['inventory']
+        return player
+    else:
+        return None

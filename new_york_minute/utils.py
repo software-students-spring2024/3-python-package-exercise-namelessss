@@ -3,7 +3,7 @@
 import json
 import os
 
-def save_progress(player):
+def save_progress(player, save_file):
     player_data = {
         'name': player.name,
         'dream': player.dream,
@@ -14,6 +14,6 @@ def save_progress(player):
         'current_location': player.current_location,
         'inventory': player.inventory
     }
-    with open('savegame.json', 'w') as f:
+    with open(save_file, 'w') as f:
         json.dump(player_data, f)
     print("Game progress saved.")
