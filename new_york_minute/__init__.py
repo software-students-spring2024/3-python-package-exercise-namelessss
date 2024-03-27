@@ -23,5 +23,3 @@ def load_game(save_file, actions=None):
         start_game(player, actions)
     else:
         print("No saved game found.")
-
-__all__ = ['solo_game', 'multiplayer_game', 'custom_game', 'load_game']
