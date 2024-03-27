@@ -88,6 +88,9 @@ load_game("savegame.json", actions=['work', 'relax', 'network'])
 ### Playing the Game
 During each turn, you will be presented with the current location and a random event. You can choose to work, relax, network, or save your progress. The game ends when you achieve your dream by gaining enough reputation points or when you complete all the locations.
 
+### Sample Program
+[Here](https://github.com/software-students-spring2024/3-python-package-exercise-namelessss/blob/main/example.py) is an example program using our Python package.
+
 ## Testing
 To run tests for the New York Minute package in a pipenv, ensure you have pipenv installed. Then run `pipenv install` in a new testing directory.
 After, run `pipenv shell` to activate the virtual environment. Now that we are in the virtual environment, run `pipenv install -i https://test.pypi.org/simple/ new-york-minute==0.2.0`
