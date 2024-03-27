@@ -26,19 +26,21 @@ def start_game(players, actions=None):
     if isinstance(players, list):
         for player in players:
             print(f"Welcome, {player.name}!")
+        completed_players = []
+        while len(completed_players) < len(players):
+            for player in players:
+                if player not in completed_players:
+                    if play_turn(player, actions):
+                        completed_players.append(player)
+                        print(f"{player.name} has achieved their dream!")
+                    else:
+                        print(f"{player.name}'s turn is over.")
+            print("All players have completed their turns.")
     else:
         print(f"Welcome, {players.name}!")
-
-    completed_players = []
-    while len(completed_players) < len(players):
-        for player in players:
-            if player not in completed_players:
-                if play_turn(player, actions):
-                    completed_players.append(player)
-                    print(f"{player.name} has achieved their dream!")
-                else:
-                    print(f"{player.name}'s turn is over.")
-        print("All players have completed their turns.")
+        while True:
+            if play_turn(players, actions):
+                break
 
     print("The game has ended. Thank you for playing!")
 
