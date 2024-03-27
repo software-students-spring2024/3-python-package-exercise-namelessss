@@ -1,4 +1,4 @@
-from new_york_minute import solo_game, multiplayer_game, custom_game, load_game
+from new_york_minute.game import solo_game, multiplayer_game, custom_game, load_game
 
 # Example 1: Solo game
 print("Example 1: Solo game")
