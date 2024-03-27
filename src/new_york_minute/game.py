@@ -16,7 +16,7 @@ def custom_game(num_players, player_names, player_dreams, player_backgrounds, ac
     start_game(players[:num_players], actions)
 
 def load_game(save_file, actions=None):
-    player = Player.load_progress(save_file) # ISSUE has save_file parameter
+    player = Player.load_progress(save_file)
     if player:
         start_game(player, actions)
     else:
