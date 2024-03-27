@@ -22,20 +22,25 @@ def load_game(save_file, actions=None):
     else:
         print("No saved game found.")
 
-def start_game(players, input_func=input):
+def start_game(players, actions=None):
     if isinstance(players, list):
         for player in players:
             print(f"Welcome, {player.name}!")
     else:
         print(f"Welcome, {players.name}!")
-    while True:
-        if isinstance(players, list):
-            for player in players:
-                if play_turn(player, input_func):
-                    break
-        else:
-            if play_turn(players, input_func):
-                break
+
+    completed_players = []
+    while len(completed_players) < len(players):
+        for player in players:
+            if player not in completed_players:
+                if play_turn(player, actions):
+                    completed_players.append(player)
+                    print(f"{player.name} has achieved their dream!")
+                else:
+                    print(f"{player.name}'s turn is over.")
+        print("All players have completed their turns.")
+
+    print("The game has ended. Thank you for playing!")
 
 def play_turn(player, actions=None):
     current_location = player.current_location
