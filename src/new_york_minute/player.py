@@ -28,9 +28,9 @@ class Player:
         print("You attended a networking event and improved your reputation.")
 
     @classmethod
-    def load_progress(cls):
-        if os.path.exists('savegame.json'):
-            with open('savegame.json', 'r') as f:
+    def load_progress(cls, save_file): # CHANGE: added save_file here and next 2 lines
+        if os.path.exists(save_file):
+            with open(save_file, 'r') as f:
                 player_data = json.load(f)
             player = cls(
                 player_data['name'],
