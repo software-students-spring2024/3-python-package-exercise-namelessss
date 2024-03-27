@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "new_york_minute"
-version = "0.1.0"
+version = "0.1.9.1"
 authors = [
     {name = "Hannah Horiuchi", email = "hah8236@nyu.edu"},
     {name = "Jiahua Liao", email = "jl11844@nyu.edu"},

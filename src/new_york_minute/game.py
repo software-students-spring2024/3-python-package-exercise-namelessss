@@ -2,33 +2,50 @@ from new_york_minute.events import handle_event, random_event
 from new_york_minute.player import Player
 from new_york_minute.utils import save_progress
 
-def start_game():
-    print("Welcome to New York Minute!")
-    load_game = input("Do you want to load previous game? (yes/no): ")
-    if load_game.lower() == 'yes':
-        player = Player.load_progress()
-        if player:
-            print(f"Welcome back, {player.name}!")
-        else:
-            print("No saved game found. Starting a new game.")
-            player = create_new_player()
+
+def solo_game(player_name, player_dream, player_background, actions=None):
+    player = Player(player_name, player_dream, player_background)
+    start_game(player, actions)
+
+def multiplayer_game(player_names, player_dreams, player_backgrounds, actions=None):
+    players = [Player(name, dream, background) for name, dream, background in zip(player_names, player_dreams, player_backgrounds)]
+    start_game(players, actions)
+
+def custom_game(num_players, player_names, player_dreams, player_backgrounds, actions=None):
+    players = [Player(name, dream, background) for name, dream, background in zip(player_names, player_dreams, player_backgrounds)]
+    start_game(players[:num_players], actions)
+
+def load_game(save_file, actions=None):
+    player = Player.load_progress(save_file)
+    if player:
+        start_game(player, actions)
     else:
-        player = create_new_player()
+        print("No saved game found.")
+
+def start_game(players, input_func=input):
+    if isinstance(players, list):
+        for player in players:
+            print(f"Welcome, {player.name}!")
+    else:
+        print(f"Welcome, {players.name}!")
     while True:
-        if play_turn(player):
-            break
+        if isinstance(players, list):
+            for player in players:
+                if play_turn(player, input_func):
+                    break
+        else:
+            if play_turn(players, input_func):
+                break
 
-def create_new_player():
-    player_name = input("What's your name? ")
-    player_dream = input("What's your dream in New York City? ")
-    player_background = input("Choose your background (Artist/Entrepreneur/Student): ")
-    return Player(player_name, player_dream, player_background)
-
-def play_turn(player):
+def play_turn(player, actions=None):
     current_location = player.current_location
     print(f"You are in {current_location}.")
     print(f"You decide to {handle_event(current_location)}.")
-    action = input("What would you like to do next? ('work', 'relax', 'network', 'save'): ")
+    if actions:
+        action = actions.pop(0)
+        print(f"Action: {action}")
+    else:
+        action = input("What would you like to do next? ('work', 'relax', 'network', 'save'): ")
     if action == 'work':
         player.work()
     elif action == 'relax':
@@ -36,11 +53,11 @@ def play_turn(player):
     elif action == 'network':
         player.network()
     elif action == 'save':
-        save_progress(player)
+        save_progress(player, 'savegame.json')
     else:
         print("Invalid action. Please try again.")
     random_event(player)
-    if player.reputation >= 100:
+    if player.reputation >= 50:
         print(f"Congratulations, {player.name}! You've made a name for yourself and achieved your dream of {player.dream}!")
         return True
     else:
